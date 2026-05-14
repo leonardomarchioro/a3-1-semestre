@@ -1,6 +1,9 @@
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Scanner;
 
 public class Main {
+    private static  List<FuncionarioPadrao> funcionarios = new ArrayList<>();
 
     public static void clear() {
         System.out.print("\033[H\033[2J");
@@ -29,10 +32,14 @@ public class Main {
                 case "1" -> {
                     clear();
                     System.out.println("Cadastro funcionário padrão");
+                    criarFuncionario(scanner);
+                    break;
                 }
                 case "2" -> {
                     clear();
                     System.out.println("Cadastro funcionário Comissionado");
+                    criarFuncionarioComissionado(scanner);
+                    break;
                 }
 
                 case "3" -> {
@@ -57,5 +64,42 @@ public class Main {
 
             }
         }
+    }
+
+    public static void criarFuncionario(Scanner scanner) {
+        System.out.println("\nId do funcionário: ");
+        String id = scanner.nextLine();
+
+        System.out.println("\nNome do funcionário: ");
+        String nome = scanner.nextLine().trim();
+        String nomeFormatado = nome.substring(0, 1).toUpperCase() + nome.substring(1).toLowerCase();
+
+
+        FuncionarioPadrao funcionario = new FuncionarioPadrao(nomeFormatado, id);
+        funcionarios.add(funcionario);
+
+        System.out.println("\nFuncionário criado com sucesso");
+        funcionario.exibirInformacoes();
+    }
+
+    public static void criarFuncionarioComissionado(Scanner scanner) {        
+        System.out.println("\nId do funcionário: ");
+        String id = scanner.nextLine();
+
+        System.out.println("\nNome do funcionário: ");
+        String nome = scanner.nextLine().trim();
+        String nomeFormatado = nome.substring(0, 1).toUpperCase() + nome.substring(1).toLowerCase();
+
+        System.out.println("\nTotal de vendas: ");
+        double totalVendas = scanner.nextDouble();
+
+        System.out.println("\nPorcentagem de comissão: ");
+        double porcentagem = scanner.nextDouble();
+
+        FuncionarioComissionado funcionario = new FuncionarioComissionado(nomeFormatado, id, totalVendas, porcentagem);
+        funcionarios.add(funcionario);
+
+        System.out.println("\nFuncionário criado com sucesso");
+        funcionario.exibirInformacoes();
     }
 }

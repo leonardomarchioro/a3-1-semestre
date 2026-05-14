@@ -1,0 +1,55 @@
+import java.until.Scanner
+
+public class FuncionarioComissionado{ 
+    public static void main (String[] args){
+
+    Scanner leia = new Scanner(System.in);
+    
+    final double SALARIO_BASE= 2000.0;
+    
+    String nome;
+    int matricula;
+    double valorVendas;
+    double percentualComissao;
+    double valorComissao;
+    double salarioFinal;
+
+    System.out.println("=== Cadastro Funcionario Comissionado===");
+
+    System.out.print("Informe Nome: ");
+            nome = leia.nextLine();
+
+                System.out.print("Informe a Matricula: ");
+            matricula = leia.nextLine();
+
+                System.out.print("Informe o valor das vendas: ");
+            valorVendas = leia.nextLine();
+
+                System.out.print("Informe o percentual de comissao: ");
+            percentualComissao = leia.nextLine();
+
+            // Cálculo da comissão
+            valorComissao =valorVendas*(percentualComissao/ 100);
+            
+            // Salário final
+            salarioFinal= SALARIO_BASA + valorComissao;
+
+            // Saída
+            System.out.println("/n=== Dados do Funcionário===");
+
+            System.out.println("Nome: " + nome);
+
+            System.out.println("Matricula: " + matricula);
+
+            System.out.println("Valor das vendas: R$" + valorVendas);
+
+            System.out.println("Percentual de comissao: " + percentualComissao + "%");
+
+            System.out.println("Valor da comissao:R$ " + valorComissao);
+
+            System.out.println("Salario final:R$ " + salarioFinal);
+
+            leia.close();
+    }
+}
+        
