@@ -1,4 +1,6 @@
+clean:
+	find . -name "*.class" -type f -delete
 build:
-	javac Main.java
+	make clean && javac Main.java
 run: 
-	java Main
+	make build && java Main

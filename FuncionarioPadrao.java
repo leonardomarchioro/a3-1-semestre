@@ -1,32 +1,42 @@
+import java.text.NumberFormat;
+import java.util.Locale;
 
 public class FuncionarioPadrao {
     public double salario;
-    public String Id;
+    public int id;
     public String nome;
 
-    public FuncionarioPadrao(String nome, String id) {
-        this.salario = 2000;
+    public FuncionarioPadrao(int id, String nome, double  salario) {
+        this.id = id;
         this.nome = nome;
-        this.Id = id;
+        this.salario = salario;
+    }
+
+    public int getId() {
+        return this.id;
+    }
+    
+    public String getNome() {
+        return this.nome;
+    }
+    
+    public double getSalarioBase() {
+        return this.salario;
     }
 
     public double calcularSalario() {
         return this.salario;
     }
 
-    public String getId() {
-        return this.Id;
-    }
-
-    public String getNome() {
-        return this.nome;
+    public String converterParaMoeda(double valor) {
+        Locale brasil = new Locale("pt", "BR");
+        NumberFormat formatoMoeda = NumberFormat.getCurrencyInstance(brasil);
+        return formatoMoeda.format(valor);
     }
 
     public void exibirInformacoes() {
-        System.out.println("\nFuncionário Padrão\n");
-        System.out.println("Nome: " + getNome());
-        System.out.println("ID: " + getId());
-        System.out.println("Salário: R$ " + calcularSalario());
-        System.out.println("\n");
+        System.out.println("Matricula: " + this.getId());
+        System.out.println("Nome: " + this.getNome());
+        System.out.println("Salário final: " + this.converterParaMoeda(this.calcularSalario()));
     }
 }
